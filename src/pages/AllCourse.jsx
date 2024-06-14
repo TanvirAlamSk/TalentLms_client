@@ -4,7 +4,7 @@ import CourseCard from "../components/Home/CourseCard";
 const AllCourse = () => {
     const [courses, setCourses] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/courses")
+        fetch("https://talentlms-server.onrender.com/courses")
             .then((response) => response.json())
             .then((data) => setCourses(data))
     }, [])

@@ -9,7 +9,7 @@ const MyCourse = () => {
     const [myCourse, setMyCourse] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000//my-courses?email=${user.email}`)
+        fetch(`https://talentlms-server.onrender.com//my-courses?email=${user.email}`)
             .then((response) => response.json())
             .then((data) => setMyCourse(data))
     }, [user.email])

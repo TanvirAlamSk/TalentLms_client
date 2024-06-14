@@ -28,18 +28,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/courses/:id", element: <SingleCourse></SingleCourse>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
             },
             {
                 path: "/all-course", element: <AllCourse></AllCourse>
             },
             {
                 path: "/manage-course", element: <ManajeMyCourse></ManajeMyCourse>,
-                loader: () => fetch("http://localhost:5000/courses")
+                loader: () => fetch("https://talentlms-server.onrender.com/courses")
             },
             {
                 path: "/update-course/:id", element: <UpdateCourse></UpdateCourse>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
             },
             {
                 path: "/my-courses", element: <MyCourse></MyCourse>
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/payment/:id", element: <PrivateRouter><Payment></Payment></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
             },
             {
                 path: "/login", element: <Login></Login>
