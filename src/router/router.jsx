@@ -13,6 +13,7 @@ import MyCourse from "../pages/MyCourse";
 import AddNewCourse from "../pages/AddNewCourse";
 import Payment from "../pages/Payment";
 import NotFound from "../pages/NotFound";
+import PrivateRouter from "./PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -26,8 +27,8 @@ export const router = createBrowserRouter([
                 path: "/about", element: <About></About>
             },
             {
-                path: "/:id", element: <SingleCourse></SingleCourse>,
-                loader: ({ params }) => fetch(`http://localhost:3000/courses?id=${params.id}`)
+                path: "/courses/:id", element: <SingleCourse></SingleCourse>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
                 path: "/all-course", element: <AllCourse></AllCourse>
@@ -48,8 +49,8 @@ export const router = createBrowserRouter([
                 path: "/add-a-new-course", element: <AddNewCourse></AddNewCourse>
             },
             {
-                path: "/payment/:id", element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:3000/courses?id=${params.id}`)
+                path: "/payment/:id", element: <PrivateRouter><Payment></Payment></PrivateRouter>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
                 path: "/login", element: <Login></Login>

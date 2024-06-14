@@ -10,12 +10,13 @@ const Payment = () => {
     if (navigation.state === "loading") {
         return <Loader></Loader>
     }
-
-    const { title, price } = course[0]
+    const { course_title, price } = course
+    // console.log(course)
 
     return (
         <div className="min-h-screen ">
-            <h3 className="text-2xl">Payment for <span className="text-green-400">{title}</span></h3>
+            <h3 className="text-2xl">Payment for <span className="text-green-400">{
+                course_title}</span></h3>
             <div className="md:w-96 mx-auto mt-8">
                 <Elements stripe={stripePromise} >
                     <CheckOutForm

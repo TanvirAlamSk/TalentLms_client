@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Courses = () => {
     const [courses, setCourses] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/courses")
+        fetch("https://talentlms-server.onrender.com/courses")
             .then((response) => response.json())
             .then((data) => setCourses(data))
     }, [])
@@ -21,7 +21,7 @@ const Courses = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
-                    courses.slice(0, 3).map((course) => <CourseCard img={`img${course.id}`} key={course.id} course={course}></CourseCard>)
+                    courses.slice(0, 3).map((course) => <CourseCard key={course._id} course={course}></CourseCard>)
                 }
 
             </div>

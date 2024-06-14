@@ -5,8 +5,13 @@ import { FaHome } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaDiscourse } from "react-icons/fa";
 import Footer from "../components/Shared/Footer";
+import { useContext } from "react";
+import { contextProvider } from "../context/AnthContext";
 
 const Dashboard = () => {
+    const { user, logout } = useContext(contextProvider)
+
+
     return (
         <div>
             <div className="bg-gray-800 w-full block h-12 lg:hidden ">
@@ -47,45 +52,53 @@ const Dashboard = () => {
                                 <Link to="/all-course" className="text-sm  ml-2">All Course</Link>
                             </div>
                         </li>
-                        <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-3">
-                            <div className="flex items-center">
-                                <IoMdLogIn></IoMdLogIn>
-                                <Link to="/login" className="text-sm  ml-3">LogIn</Link>
-                            </div>
-                        </li>
-                        <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-3">
-                            <div className="flex items-center">
-                                <IoMdLogOut></IoMdLogOut>
-                                <Link to="" className="text-sm  ml-3">Logout</Link>
-                            </div>
-                        </li>
 
-                        <li className="flex w-full justify-between text-gray-300 hover:text-gray-100 cursor-pointer items-center mb-">
-                            <div className="text-white">
-                                <details >
-                                    <summary className="flex items-center px-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" />
-                                            <rect x={4} y={4} width={6} height={6} rx={1} />
-                                            <rect x={14} y={4} width={6} height={6} rx={1} />
-                                            <rect x={4} y={14} width={6} height={6} rx={1} />
-                                            <rect x={14} y={14} width={6} height={6} rx={1} />
-                                        </svg>
-                                        <Link to="/my-courses" className="text-sm  ml-2">Dashboard
-                                        </Link>
-                                        <IoIosArrowDown className="ml-1"></IoIosArrowDown>
-                                    </summary>
+                        {
+                            !user ?
+                                <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-3">
+                                    <div className="flex items-center">
+                                        <IoMdLogIn></IoMdLogIn>
+                                        <Link to="/login" className="text-sm  ml-3">LogIn</Link>
+                                    </div>
+                                </li>
+                                :
+                                <>
+                                    <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-3">
+                                        <div className="flex items-center">
+                                            <IoMdLogOut></IoMdLogOut>
+                                            <button onClick={logout} className="text-sm  ml-3">Logout</button>
+                                        </div>
+                                    </li>
 
-                                    <ul className="p-2">
-                                        <li><Link to="">My Course</Link></li>
-                                        <li><Link to="">My Enrolled Course</Link></li>
-                                        <li><Link to="/manage-course">Manage My Course</Link></li>
-                                        <li><Link to="/add-a-new-course">Add A New Course</Link></li>
+                                    <li className="flex w-full justify-between text-gray-300 hover:text-gray-100 cursor-pointer items-center mb-">
+                                        <div className="text-white">
+                                            <details >
+                                                <summary className="flex items-center px-4">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                                        <rect x={4} y={4} width={6} height={6} rx={1} />
+                                                        <rect x={14} y={4} width={6} height={6} rx={1} />
+                                                        <rect x={4} y={14} width={6} height={6} rx={1} />
+                                                        <rect x={14} y={14} width={6} height={6} rx={1} />
+                                                    </svg>
+                                                    <Link to="/my-courses" className="text-sm  ml-2">Dashboard
+                                                    </Link>
+                                                    <IoIosArrowDown className="ml-1"></IoIosArrowDown>
+                                                </summary>
 
-                                    </ul>
-                                </details>
-                            </div>
-                        </li>
+                                                <ul className="p-2">
+                                                    <li><Link to="">My Course</Link></li>
+                                                    <li><Link to="">My Enrolled Course</Link></li>
+                                                    <li><Link to="/manage-course">Manage My Course</Link></li>
+                                                    <li><Link to="/add-a-new-course">Add A New Course</Link></li>
+
+                                                </ul>
+                                            </details>
+                                        </div>
+                                    </li>
+                                </>
+                        }
+
                         {/* <li className="flex w-full justify-between text-gray-600 hover:text-gray-500 cursor-pointer items-center mb-6">
                             <div className="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-puzzle" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">

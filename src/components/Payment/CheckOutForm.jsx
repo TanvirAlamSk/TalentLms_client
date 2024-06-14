@@ -13,10 +13,11 @@ const CheckOutForm = ({ course, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const navigate = useNavigate()
-    const { title, id } = course[0]
+    const { title, id } = course
+
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://talentlms-server.onrender.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -73,10 +74,11 @@ const CheckOutForm = ({ course, price }) => {
             return;
         }
         if (paymentIntent.status === "succeeded") {
+            toast.success("Payment Successfully");
             const paymentInfo = {
                 price
             }
-            fetch(`http://localhost:5000/payments/${id}`, {
+            fetch(`https://talentlms-server.onrender.com/${id}`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -115,9 +117,8 @@ const CheckOutForm = ({ course, price }) => {
                     },
                 }}
             />
-            <input className="border-2 rounded"></input>
-            <br></br>
-            <button type="submit" className="btn btn-sm mt-2 btn-info" disabled={!stripe || !clientSecret || proseccing}>
+            {/*  || !clientSecret || proseccing */}
+            <button type="submit" className="btn btn-sm mt-2 btn-info" disabled={!stripe}>
                 Pay
             </button>
         </form>

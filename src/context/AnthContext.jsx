@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile } from 'firebase/auth';
+import toast from "react-hot-toast";
 
 export const contextProvider = createContext()
 const AnthContext = ({ children }) => {
@@ -41,6 +42,7 @@ const AnthContext = ({ children }) => {
         signOut(auth)
             .then(() => {
                 setUser("")
+                toast.success("Logout SuccessFull")
                 setLoader(false)
                 localStorage.removeItem("recipe-easy-token")
             })
