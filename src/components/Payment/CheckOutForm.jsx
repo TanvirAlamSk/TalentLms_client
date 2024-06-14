@@ -13,11 +13,11 @@ const CheckOutForm = ({ course, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const navigate = useNavigate()
-    const { title, id } = course
+    const { title, _id } = course
 
 
     useEffect(() => {
-        fetch("https://talentlms-server.onrender.com/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intentt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +27,7 @@ const CheckOutForm = ({ course, price }) => {
         })
             .then((response) => response.json())
             .then((data) => setClientSecret(data.clientSecret))
-    }, [])
+    }, [price])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -49,6 +49,7 @@ const CheckOutForm = ({ course, price }) => {
         });
 
         if (error) {
+            console.log("111")
             toast.error(error.message)
             console.log('[error]', error);
         } else {
@@ -69,6 +70,7 @@ const CheckOutForm = ({ course, price }) => {
             },
         );
         if (conformError) {
+            console.log("222")
             toast.error(conformError.message)
             setProseccing(false)
             return;
@@ -78,7 +80,7 @@ const CheckOutForm = ({ course, price }) => {
             const paymentInfo = {
                 price
             }
-            fetch(`https://talentlms-server.onrender.com/${id}`, {
+            fetch(`http://localhost:5000/${_id}`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
