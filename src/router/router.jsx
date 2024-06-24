@@ -12,10 +12,12 @@ import UpdateCourse from "../Pages/Course/UpdateCourse";
 import MyCourse from "../Pages/Course/MyCourse";
 import PrivateRouter from "./PrivateRouter";
 import Content from "../Pages/Content/Content";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: "/", element: <Dashboard></Dashboard>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: ([
             {
                 path: "/", element: <Home></Home>
