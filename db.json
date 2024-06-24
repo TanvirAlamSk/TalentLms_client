@@ -1,55 +1,92 @@
 {
-    "courses": [
-        {
-            "id": 1,
-            "title": "Web Development",
-            "instructor": "Akash",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
-            "owner_email": "akash@batash.com",
-            "price": 1000,
-            "img": "../src/assets/CoursesImage/course-1.jpg"
-        },
-        {
-            "id": 2,
-            "title": "Digital Marketing",
-            "instructor": "Rana",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
-            "owner_email": "rana@bana.com",
-            "price": 1100,
-            "img": "../src/assets/CoursesImage/course-2.jpg"
-        },
-        {
-            "id": 3,
-            "title": "Graphic Design",
-            "instructor": "Raja",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
-            "owner_email": "raja@rani.com",
-            "price": 1200,
-            "img": "../src/assets/CoursesImage/course-3.jpg"
-        },
-        {
-            "id": 4,
-            "title": "Content Writing",
-            "instructor": "Priya",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
-            "owner_email": "priya@banu.com",
-            "price": 1300,
-            "img": "../src/assets/CoursesImage/course-4.jpg"
-        }
-    ],
-    "comments": [
-        {
-            "id": "1",
-            "text": "a comment about post 1",
-            "postId": "1"
-        },
-        {
-            "id": "2",
-            "text": "another comment about post 1",
-            "postId": "1"
-        }
-    ],
-    "profile": {
-        "name": "typicode"
+  "courses": [
+    {
+      "id": "1",
+      "title": "Web Development",
+      "instructor": "Akash",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
+      "owner_email": "akash@batash.com",
+      "price": 1000,
+      "img": "../src/assets/CoursesImage/course-1.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Digital Marketing",
+      "instructor": "Rana",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
+      "owner_email": "rana@bana.com",
+      "price": 1100,
+      "img": "../src/assets/CoursesImage/course-2.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Graphic Design",
+      "instructor": "Raja",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
+      "owner_email": "raja@rani.com",
+      "price": 1200,
+      "img": "../src/assets/CoursesImage/course-3.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Content Writing",
+      "instructor": "Priya",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
+      "owner_email": "priya@banu.com",
+      "price": 1300,
+      "img": "../src/assets/CoursesImage/course-4.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Web Development",
+      "instructor": "Akash",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum quasi quae, consectetur aspernatur nihil totam laudantium ipsum eum accusantium quam ad debitis sequi nam dolores iste ea? Dolores, harum nostrum.",
+      "owner_email": "akash@batash.com",
+      "price": 1000,
+      "img": "../src/assets/CoursesImage/course-1.jpg"
+    },
+    {
+      "title": "pihefoifeg",
+      "instructor": ";wihfwif",
+      "description": "liefhoiehf",
+      "price": "423000000000",
+      "image": "fmbsrjbf",
+      "id": "2773"
+    },
+    {
+      "id": "f9e5",
+      "title": "pihefoifeg",
+      "description": "liefhoiehf",
+      "instructor": ";wihfwif",
+      "img": "fmbsrjbf",
+      "owner_email": "akash@batas.com",
+      "price": "423"
+    },
+    {
+      "id": "5648",
+      "title": "lishfyf9ef97",
+      "description": "/,xjcbvkdsvjhdsvjhdsjhvdsv jhd",
+      "instructor": "sk;jbfciygcyuevc",
+      "img": "jsdnfkjsdbfvlhvgyuvd",
+      "owner_email": "akash@batas.com",
+      "price": "837456"
+    },
+    {
+      "title": "slknfnvusfgbudv",
+      "instructor": "jxcbvkjdbfvudgf nxcjb ",
+      "description": "xkdnvkdjfhviudhfiuvbfdibvjfbdvhjdhvdhjd n vkhdfbvhbfhvbehfuerh jrerbiugegigureiu",
+      "price": "3800",
+      "image": ",jjxcbkjsdvbkhdshsdkhjcvdsn nds nds",
+      "id": "18d3"
+    },
+    {
+      "id": "d3bd",
+      "title": "leforhgfeugh",
+      "description": "ljjosudgfs",
+      "instructor": "mdcdnsjvbjkb",
+      "img": "kncljsbvs",
+      "owner_email": "akash@batas.com",
+      "price": "mdkcknlv 83248"
     }
+  ]
 }

@@ -1,33 +1,33 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useState } from "react";
+import { CardElement, LinkAuthenticationElement, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthContext";
 
-// eslint-disable-next-line no-unused-vars
-const CheckOutForm = ({ course, price }) => {
-    // eslint-disable-next-line no-unused-vars
-    const [clientSecret, setClientSecret] = useState("")
-    const [proseccing, setProseccing] = useState(false)
-    const stripe = useStripe();
-    const elements = useElements();
+const CheckOutForm = ({ course, username }) => {
+    const { user } = useContext(AuthProvider)
     const navigate = useNavigate()
-    const { title, _id } = course
+    const stripe = useStripe()
+    const elements = useElements()
+    const [clientSecret, setClientSecret] = useState("")
+    const [isLoading, setIsLoading] = useState(false);
 
+    const { course_title, _id, owner_email, image_url } = course
 
     useEffect(() => {
-        fetch("https://talentlms-server.onrender.com/create-payment-intentt", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 // authorization: `bearer ${localStorage.getItem("Access-Token")}`
             },
-            body: JSON.stringify({ price })
+            body: JSON.stringify({ price: course?.price })
         })
             .then((response) => response.json())
             .then((data) => setClientSecret(data.clientSecret))
-    }, [price])
+    }, [course?.price])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -35,6 +35,14 @@ const CheckOutForm = ({ course, price }) => {
         if (!stripe || !elements) {
             return;
         }
+        setIsLoading(true);
+        // const { error: confirmError } = await stripe.confirmPayment({
+        //     elements,
+        //     confirmParams: {
+        //         // Make sure to change this to your payment completion page
+        //         return_url: `${window.location.origin}/completion`,
+        //     },
+        // });
 
         const card = elements.getElement(CardElement);
 
@@ -42,67 +50,69 @@ const CheckOutForm = ({ course, price }) => {
             return;
         }
 
-
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
 
         if (error) {
-            console.log("111")
             toast.error(error.message)
-            console.log('[error]', error);
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            // toast.success("Payment Successfully");
         }
-        setProseccing(true)
-        //---------------------------------------
+
         const { paymentIntent, error: conformError } = await stripe.confirmCardPayment(
             clientSecret,
             {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: "patientName",
-                        email: "email",
+                        name: username,
+                        email: user?.email,
                     },
                 },
             },
         );
+
+
         if (conformError) {
-            console.log("222")
             toast.error(conformError.message)
-            setProseccing(false)
             return;
         }
+
         if (paymentIntent.status === "succeeded") {
-            toast.success("Payment Successfully");
+            // toast.success("Payment Successfully");
             const paymentInfo = {
-                price
+                course_title,
+                course_id: _id,
+                price: course?.price,
+                owner_email,
+                student_email: user?.email,
+                image_url
             }
-            fetch(`https://talentlms-server.onrender.com/${_id}`, {
+
+            fetch("http://localhost:5000/enroll-course", {
                 method: "POST",
                 headers: {
-                    "content-type": "application/json"
-                    // authorization: `bearer ${localStorage.getItem("Access-Token")}`
+                    "content-type": "application/json",
+                    authorization: `bearer ${localStorage.getItem("Access-Token")}`
                 },
                 body: JSON.stringify(paymentInfo)
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    if (data.modifiedCount > 0) {
-                        setProseccing(false)
+
+                    if (data.acknowledged) {
                         toast.success("Payment Successfully");
-                        navigate("/dashboard");
+                        navigate("/my-courses");
                     }
                 })
         }
-        // 
+        setIsLoading(false);
     }
 
-
     return (
-        <form onSubmit={handleSubmit}>
+        <form id="payment-form" onSubmit={handleSubmit}>
             <CardElement
                 options={{
                     style: {
@@ -119,9 +129,8 @@ const CheckOutForm = ({ course, price }) => {
                     },
                 }}
             />
-            {/*  || !clientSecret || proseccing */}
             <button type="submit" className="btn btn-sm mt-2 btn-info" disabled={!stripe}>
-                Pay
+                Pay {course?.price}
             </button>
         </form>
     );

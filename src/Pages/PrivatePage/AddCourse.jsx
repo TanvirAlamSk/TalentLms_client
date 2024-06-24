@@ -1,37 +1,47 @@
+/* eslint-disable no-unused-vars */
+import { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthProvider } from "../../context/AuthContext";
 
-const AddNewCourse = () => {
-
+const AddCourse = () => {
+    const { user } = useContext(AuthProvider)
     const handelAddProduct = (event) => {
         event.preventDefault();
         const instructor = event.target.instructor.value
-        const title = event.target.title.value
+        const course_title = event.target.title.value
         const price = event.target.price.value
-        const image = event.target.image.value
+        const image_url = event.target.image.value
+        const img = event.target.image.value
         const description = event.target.description.value
+        const owner_email = user?.email
 
-        const newProduct = {
-            title,
-            instructor,
+        const newCourse = {
+            course_title,
             description,
-            price,
-            image
+            instructor,
+            image_url,
+            owner_email,
+            price
         }
 
-        fetch("http://localhost:3000/courses", {
+        fetch("http://localhost:5000/courses", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                // "authorization": `bearer ${localStorage.getItem("recipe-easy-token")}`
             },
-            body: JSON.stringify(newProduct)
+            body: JSON.stringify(newCourse)
         })
             .then((response) => response.json())
             .then((data) => {
-                if (data.acknowledged) {
-                    toast.success("product Added Successfully")
-                    event.target.reset()
-                }
-            })
+                console.log(data)
+                toast.success("product Added Successfully")
+                event.target.reset()
+                // if (data.acknowledged) {
+                //     toast.success("product Added Successfully")
+                //     event.target.reset()
+                // }
+            }).catch((error) => alert(error))
     }
 
     return (
@@ -66,11 +76,11 @@ const AddNewCourse = () => {
                     </div>
                 </div>
                 <div className='px-'>
-                    <button className='w-full btn btn-info text-white my-4'>Add Product</button>
+                    <button className='w-full btn btn-info text-white my-4'>Add Course</button>
                 </div>
             </form>
         </div>
     );
 };
 
-export default AddNewCourse;
+export default AddCourse;

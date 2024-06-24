@@ -1,22 +1,22 @@
-import { FaArrowRight } from "react-icons/fa";
 import { Link, useLoaderData, useNavigation } from "react-router-dom";
 import Loader from "../../components/Shared/Loader";
+import { FaArrowRight } from "react-icons/fa";
 
-const SingleCourse = () => {
+const SinglePage = () => {
     const course = useLoaderData()
     const navigation = useNavigation()
-    const { image_url, title, instructor, description, price, _id } = course
+    // eslint-disable-next-line no-unused-vars
+    const { image_url, course_title, instructor, description, price, _id } = course
 
     if (navigation.state === "loading") {
         return <Loader></Loader>
     }
-
     return (
         <div className="card bg-base-100 shadow-xl border-2 h-[720px] w-full">
             <figure className='rounded-lg m-4'><img className=''
                 src={image_url} alt="CourseImage" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{title}</h2>
+                <h2 className="card-title">{course_title}</h2>
                 <p className="text-xl m-0 p-0">{instructor}</p>
                 <p>{description}</p>
                 <small> {price} Taka</small>
@@ -32,4 +32,4 @@ const SingleCourse = () => {
     );
 };
 
-export default SingleCourse;
+export default SinglePage;

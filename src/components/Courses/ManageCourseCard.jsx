@@ -1,19 +1,19 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-const ManageCourseCard = ({ myCourse, index, handelDelectProduct }) => {
-    const { title, instructor, price, id } = myCourse
+/* eslint-disable react/prop-types */
+const ManageCourseCard = ({ course, index, handelDelectProduct }) => {
+    const { course_title, instructor, price, _id } = course
     return (
         <tr>
             <th>{index + 1}</th>
             <td>{instructor}</td>
-            <td>{title}</td>
+            <td>{course_title}</td>
             <td>{price}</td>
             <td className='flex gap-2'>
-                <Link to={`/update-course/${id}`}>
+                <Link to={`/update-course/${_id}`}>
                     <button className='btn btn-sm btn-success text-white'>Update</button>
                 </Link>
-                <button onClick={() => handelDelectProduct(id)} className='btn btn-sm btn-error text-white'>Delate</button>
+                <button onClick={() => handelDelectProduct(_id)} className='btn btn-sm btn-error text-white'>Delate</button>
             </td>
         </tr>
     );

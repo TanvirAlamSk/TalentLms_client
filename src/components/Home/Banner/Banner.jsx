@@ -1,10 +1,7 @@
-import carosel1 from "../../../assets/BannerImage/carousel-1.jpg"
-import carosel2 from "../../../assets/BannerImage/carousel-1.jpg"
-import carosel3 from "../../../assets/BannerImage/carousel-1.jpg"
 import BannerSectionItem from "./BannerSectionItem/BannerSectionItem";
-
-
-
+import carosel1 from "../../../assets/BannerImage/carousel-1.jpg"
+import carosel2 from "../../../assets/BannerImage/carousel-2.jpg"
+import carosel3 from "../../../assets/BannerImage/carousel-3.jpg"
 const Banner = () => {
     const images = [carosel1, carosel2, carosel3]
     return (

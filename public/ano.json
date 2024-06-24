@@ -1,0 +1,66 @@
+[
+    {
+        "course_title": "Web Development",
+        "description": "Web development is the behind-the-scenes magic that brings websites to life. Developers build and maintain websites, crafting the structure and functionality you see and interact with. They use code to turn ideas into reality, ensuring websites are user-friendly, visually appealing, and function flawlessly across devices. From simple static pages to complex web applications, web developers bring the digital world to life.",
+        "instructor": "Akash",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5eH2V8OKWHpH-1U2KbS0KSfPGG1ESHjx_FA&s",
+        "owner_email": "akash@batash.com",
+        "price": 1000
+    },
+    {
+        "course_title": "Digital Marketing",
+        "description": "Digital marketing is the promotion of products or services through online channels. It leverages websites, apps, social media, search engines, and more to reach potential customers. Marketers create engaging content, target specific audiences with ads, and analyze results to optimize campaigns. Compared to traditional marketing, digital offers measurable results, wider reach, and greater engagement, making it a vital tool for businesses today.",
+        "instructor": "Rana",
+        "image_url": "https://www.simplilearn.com/ice9/free_resources_article_thumb/What_is_digital_marketing.jpg",
+        "owner_email": "rana@bana.com",
+        "price": 1100
+    },
+    {
+        "course_title": "Graphic Design",
+        "description": "Graphic design is the art of visual communication. Designers use images, typography, and layout to create ideas, information, and experiences. They work with balance, contrast, and hierarchy to guide the viewer's eye and deliver a message. From logos and posters to websites and magazines, graphic design shapes the world around us.",
+        "instructor": "Raja",
+        "image_url": "https://www.simplilearn.com/ice9/free_resources_article_thumb/Is_Graphic_Design_A_Good_Career.jpg",
+        "owner_email": "raja@rani.com",
+        "price": 1200
+    },
+    {
+        "course_title": "Content Writing",
+        "description": "Content writing is the art of crafting engaging information. Writers use words to inform, persuade, or entertain readers. They target specific audiences and tailor content to their needs. Effective content is clear, concise, and SEO-friendly, meaning it uses keywords to rank well in search engines. From website blogs and product descriptions to social media captions and email newsletters, content writing fuels the digital world.",
+        "instructor": "Priya",
+        "image_url": "https://www.simplilearn.com/ice9/free_resources_article_thumb/How_To_Become_A_Content_Writer.jpg",
+        "owner_email": "priya@banu.com",
+        "price": 1300
+    },
+    {
+        "course_title": "Project Management Essentials",
+        "description": "Project Management Essentials: Equip yourself with the skills to organize tasks, resources, and teams. Learn about planning, scheduling, budgeting, and risk management. Become a pro at keeping projects on track and achieving goals.",
+        "instructor": "Sarah Lee",
+        "image_url": "https://example.com/images/projectmanagement_course.jpg",
+        "owner_email": "sarah.lee@example.com",
+        "price": 599
+    },
+    {
+        "course_title": "Artificial Intelligence for Beginners",
+        "description": "Artificial Intelligence for Beginners: Dive into the exciting world of AI! Explore core concepts like machine learning, deep learning, and robotics. Uncover the potential of AI to revolutionize various fields.",
+        "instructor": "Robert Johnson",
+        "image_url": "https://example.com/images/ai_course.jpg",
+        "owner_email": "robert.johnson@example.com",
+        "price": 899
+    },
+    {
+        "course_title": "Financial Accounting Basics",
+        "description": "Financial Accounting Basics: Master the language of business! Learn how to record, classify, and analyze financial transactions. Gain insights into a company's financial health.",
+        "instructor": "Linda Green",
+        "image_url": "https://example.com/images/accounting_course.jpg",
+        "owner_email": "linda.green@example.com",
+        "price": 49.99
+    },
+    {
+        "course_title": "Public Speaking and Presentation Skills",
+        "description": "Public Speaking and Presentation Skills: Captivate your audience and deliver impactful presentations. Learn techniques for crafting compelling content, overcoming stage fright, and using visuals effectively.",
+        "instructor": "Chris Thompson",
+        "image_url": "https://example.com/images/publicspeaking_course.jpg",
+        "owner_email": "chris.thompson@example.com",
+        "price": 399
+    }
+]

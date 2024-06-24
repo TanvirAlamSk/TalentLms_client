@@ -1,63 +1,66 @@
 import { createBrowserRouter } from "react-router-dom";
-// import Main from "../layouts/Main";
-import Home from "../pages/Home";
-import About from "../pages/About";
 import Dashboard from "../layouts/Dashboard";
-import SingleCourse from "../pages/SingleCourse/SingleCourse";
-import Login from "../pages/Login";
-import SignUp from "../pages/SignUp";
-import AllCourse from "../pages/AllCourse";
-import ManajeMyCourse from "../pages/ManajeMyCourse";
-import UpdateCourse from "../pages/UpdateCourse";
-import MyCourse from "../pages/MyCourse";
-import AddNewCourse from "../pages/AddNewCourse";
-import Payment from "../pages/Payment";
-import NotFound from "../pages/NotFound";
+import Home from "../Pages/Home/Home";
+import AllCourses from "../Pages/All-Courses/AllCourses";
+import SinglePage from "../Pages/SinglePage/SinglePage";
+import Payment from "../Pages/Payment/Payment";
+import Login from "../Pages/Signinup/Login";
+import SignUp from "../Pages/Signinup/SignUp";
+import AddCourse from "../Pages/PrivatePage/AddCourse";
+import ManageCourse from "../Pages/Course/ManageCourse";
+import UpdateCourse from "../Pages/Course/UpdateCourse";
+import MyCourse from "../Pages/Course/MyCourse";
 import PrivateRouter from "./PrivateRouter";
+import Content from "../Pages/Content/Content";
 
 export const router = createBrowserRouter([
     {
         path: "/", element: <Dashboard></Dashboard>,
-        errorElement: <NotFound></NotFound>,
         children: ([
             {
                 path: "/", element: <Home></Home>
             },
             {
-                path: "/about", element: <About></About>
+                path: "/all-course", element: <AllCourses></AllCourses>
             },
             {
-                path: "/courses/:id", element: <SingleCourse></SingleCourse>,
-                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
+                path: "/courses/:id", element: <SinglePage></SinglePage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
-                path: "/all-course", element: <AllCourse></AllCourse>
-            },
-            {
-                path: "/manage-course", element: <ManajeMyCourse></ManajeMyCourse>,
-                loader: () => fetch("https://talentlms-server.onrender.com/courses")
-            },
-            {
-                path: "/update-course/:id", element: <UpdateCourse></UpdateCourse>,
-                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
-            },
-            {
-                path: "/my-courses", element: <MyCourse></MyCourse>
-            },
-            {
-                path: "/add-a-new-course", element: <AddNewCourse></AddNewCourse>
-            },
-            {
-                path: "/payment/:id", element: <PrivateRouter><Payment></Payment></PrivateRouter>,
-                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
+                path: "/payment/:id",
+                element: <PrivateRouter><Payment></Payment></PrivateRouter>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
                 path: "/login", element: <Login></Login>
             },
             {
                 path: "/signup", element: <SignUp></SignUp>
+            },
+            {
+                path: "/add-a-new-course", element: <PrivateRouter><AddCourse></AddCourse></PrivateRouter>
+            },
+            {
+                path: "/manage-course", element: <PrivateRouter>
+                    <ManageCourse></ManageCourse>
+                </PrivateRouter>
+            },
+            {
+                path: "/update-course/:id", element: <PrivateRouter>
+                    <UpdateCourse></UpdateCourse>
+                </PrivateRouter>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+            },
+            {
+                path: "/my-courses", element: <PrivateRouter>
+                    <MyCourse></MyCourse>
+                </PrivateRouter>
+            },
+            {
+                path: "/content/:id", element: <Content></Content>,
+                loader: ({ params }) => fetch(`http://localhost:5000/enroll-course/${params.id}`)
             }
         ])
     }
-
 ])

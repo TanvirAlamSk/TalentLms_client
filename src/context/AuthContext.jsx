@@ -4,8 +4,8 @@ import auth from "../firebase/firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile } from 'firebase/auth';
 import toast from "react-hot-toast";
 
-export const contextProvider = createContext()
-const AnthContext = ({ children }) => {
+export const AuthProvider = createContext("")
+const AuthContext = ({ children }) => {
     const [user, setUser] = useState("")
     const [loader, setLoader] = useState(true)
 
@@ -44,7 +44,7 @@ const AnthContext = ({ children }) => {
                 setUser("")
                 toast.success("Logout SuccessFull")
                 setLoader(false)
-                localStorage.removeItem("recipe-easy-token")
+                localStorage.removeItem("talent-lms-token")
             })
             .catch((error) => alert(error))
     }
@@ -64,12 +64,11 @@ const AnthContext = ({ children }) => {
 
 
     const value = { user, loader, setUser, setLoader, createUser, userLogin, googleSignIn, userUpdate, userEmailUpdate, userPasswordUpdate, logout }
-
     return (
-        <contextProvider.Provider value={value}>
+        <AuthProvider.Provider value={value}>
             {children}
-        </contextProvider.Provider>
+        </AuthProvider.Provider>
     );
 };
 
-export default AnthContext;
+export default AuthContext;

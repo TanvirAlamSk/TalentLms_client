@@ -1,45 +1,55 @@
+/* eslint-disable no-unused-vars */
+import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
+import Loader from "../../components/Shared/Loader";
 import toast from "react-hot-toast";
-import { useLoaderData, useNavigation } from "react-router-dom";
-import Loader from "../components/Shared/Loader";
+import { useContext } from "react";
+import { AuthProvider } from "../../context/AuthContext";
 
 const UpdateCourse = () => {
+    const { user } = useContext(AuthProvider)
+    const navigate = useNavigate()
     const course = useLoaderData()
     const navigation = useNavigation()
     if (navigation.state === "loading") {
         return <Loader></Loader>
     }
-    const { title, instructor, description, price, img, id } = course[0]
+    const { course_title, instructor, description, price, image_url, _id } = course
 
     const handelUpdateCourse = (event) => {
         event.preventDefault()
         const title = event.target.title.value
         const instructor = event.target.instructor.value
         const price = event.target.price.value
-        const image = event.target.image.value
+        const image_url = event.target.image.value
         const description = event.target.description.value
+        const owner_email = user?.email
 
         const updateCourse = {
-            title,
-            instructor,
+            course_title,
             description,
-            price,
-            image,
+            instructor,
+            image_url,
+            owner_email,
+            price
         }
 
-        fetch(`http://localhost:3000/courses?id=${id}`, {
-            method: "PUT",
+        fetch(`http://localhost:5000/courses/${_id}`, {
+            method: "PATCH",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "Application/json",
+                authorization: `bearer ${localStorage.getItem("talent-lms-token")}`
             },
             body: JSON.stringify(updateCourse)
         })
             .then((response) => response.json())
-            .then(() => {
-                console.log("hallo")
-                toast.success("Product update successfully")
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    toast.success("Product update successfully");
+                    navigate("/manage-course")
+                }
             })
-
     }
+
     return (
         <div className='md:w-2/3 mx-auto my-10 p-6 border border-solid rounded-md'>
             <h2 className='text-2xl font-semibold text-center'>Update Course</h2>
@@ -47,7 +57,7 @@ const UpdateCourse = () => {
                 <div className='flex flex-col md:flex-row w-full gap-6 mt-5 justify-around'>
                     <div className='w-full'>
                         <label className='text-gray-500'>Title</label>
-                        <input name='title' type="text" defaultValue={title} className="input input-bordered w-full" />
+                        <input name='title' type="text" defaultValue={course_title} className="input input-bordered w-full" />
                     </div>
                     <div className='w-full'>
                         <label className='text-gray-500'>Instructor</label>
@@ -61,7 +71,7 @@ const UpdateCourse = () => {
                     </div>
                     <div className='w-full'>
                         <label className='text-gray-500'>Image</label>
-                        <input name='image' defaultValue={img} type="text" className="input input-bordered  w-full" />
+                        <input name='image' defaultValue={image_url} type="text" className="input input-bordered  w-full" />
                     </div>
                 </div>
                 <div className='mt-10'>

@@ -1,17 +1,12 @@
+import { FaDiscourse, FaHome } from "react-icons/fa";
+import { IoIosArrowDown, IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { Link, Outlet } from "react-router-dom";
-import { IoMdLogIn } from "react-icons/io";
-import { IoMdLogOut } from "react-icons/io";
-import { FaHome } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
-import { FaDiscourse } from "react-icons/fa";
 import Footer from "../components/Shared/Footer";
 import { useContext } from "react";
-import { contextProvider } from "../context/AnthContext";
+import { AuthProvider } from "../context/AuthContext";
 
 const Dashboard = () => {
-    const { user, logout } = useContext(contextProvider)
-
-
+    const { user, logout } = useContext(AuthProvider)
     return (
         <div>
             <div className="bg-gray-800 w-full block h-12 lg:hidden ">
@@ -87,8 +82,8 @@ const Dashboard = () => {
                                                 </summary>
 
                                                 <ul className="p-2">
-                                                    <li><Link to="">My Course</Link></li>
-                                                    <li><Link to="">My Enrolled Course</Link></li>
+                                                    {/* <li><Link to="">My Course</Link></li> */}
+                                                    <li><Link to="/my-courses">My Enrolled Course</Link></li>
                                                     <li><Link to="/manage-course">Manage My Course</Link></li>
                                                     <li><Link to="/add-a-new-course">Add A New Course</Link></li>
 
