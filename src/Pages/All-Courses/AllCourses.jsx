@@ -5,7 +5,7 @@ const AllCourses = () => {
     const [allCourse, setAllCourse] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/courses")
+        fetch("https://talentlms-server.onrender.com/courses")
             .then((response) => response.json())
             .then((data) => setAllCourse(data))
     }, [])

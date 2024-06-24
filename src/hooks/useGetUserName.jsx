@@ -5,7 +5,7 @@ const useGetUserName = () => {
     const [userName, setUserName] = useState("")
     const { user } = useContext(AuthProvider)
     useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user?.email}`, {
+        fetch(`https://talentlms-server.onrender.com/users?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem("talent-lms-token")}`
             }

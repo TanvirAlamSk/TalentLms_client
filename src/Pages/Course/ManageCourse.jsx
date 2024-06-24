@@ -9,7 +9,7 @@ const ManageCourse = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-courses?email=${user.email}`, {
+        fetch(`https://talentlms-server.onrender.com/my-courses?email=${user.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem("talent-lms-token")}`
             }
@@ -19,7 +19,7 @@ const ManageCourse = () => {
     }, [user.email])
 
     const handelDelectProduct = (id) => {
-        fetch(`http://localhost:5000/courses/${id}`, {
+        fetch(`https://talentlms-server.onrender.com/courses/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem("talent-lms-token")}`

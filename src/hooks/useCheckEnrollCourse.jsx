@@ -6,7 +6,7 @@ const useCheckEnrollCourse = (id) => {
     const [enrollCourses, setEnrollCourses] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/enroll-course?email=${user?.email}`)
+        fetch(`https://talentlms-server.onrender.com/enroll-course?email=${user?.email}`)
             .then((response) => response.json())
             .then((data) => setEnrollCourses(data))
     }, [user?.email])

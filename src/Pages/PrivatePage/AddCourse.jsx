@@ -24,7 +24,7 @@ const AddCourse = () => {
             price
         }
 
-        fetch("http://localhost:5000/courses", {
+        fetch("https://talentlms-server.onrender.com/courses", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

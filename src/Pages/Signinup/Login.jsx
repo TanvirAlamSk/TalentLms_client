@@ -24,7 +24,7 @@ const Login = () => {
                 const dataForDB = {
                     email,
                 }
-                fetch("http://localhost:5000/users", {
+                fetch("https://talentlms-server.onrender.com/users", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

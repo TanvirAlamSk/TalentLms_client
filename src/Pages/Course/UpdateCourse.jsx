@@ -33,7 +33,7 @@ const UpdateCourse = () => {
             price
         }
 
-        fetch(`http://localhost:5000/courses/${_id}`, {
+        fetch(`https://talentlms-server.onrender.com/courses/${_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "Application/json",

@@ -17,7 +17,7 @@ const CheckOutForm = ({ course, username }) => {
     const { course_title, _id, owner_email, image_url } = course
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://talentlms-server.onrender.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const CheckOutForm = ({ course, username }) => {
                 image_url
             }
 
-            fetch("http://localhost:5000/enroll-course", {
+            fetch("https://talentlms-server.onrender.com/enroll-course", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

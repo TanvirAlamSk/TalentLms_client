@@ -25,12 +25,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/courses/:id", element: <SinglePage></SinglePage>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
             },
             {
                 path: "/payment/:id",
                 element: <PrivateRouter><Payment></Payment></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
             },
             {
                 path: "/login", element: <Login></Login>
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
                 path: "/update-course/:id", element: <PrivateRouter>
                     <UpdateCourse></UpdateCourse>
                 </PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/courses/${params.id}`)
             },
             {
                 path: "/my-courses", element: <PrivateRouter>
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/content/:id", element: <Content></Content>,
-                loader: ({ params }) => fetch(`http://localhost:5000/enroll-course/${params.id}`)
+                loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/enroll-course/${params.id}`)
             }
         ])
     }
