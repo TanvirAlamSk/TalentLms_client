@@ -64,5 +64,7 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://talentlms-server.onrender.com/enroll-course/${params.id}`)
             }
         ])
+    }, {
+        path: "*", element: <ErrorPage></ErrorPage>
     }
 ])
